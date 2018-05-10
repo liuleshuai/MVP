@@ -9,6 +9,7 @@ import com.liuleshuai.mvp.model.SearchDialogContract;
 
 import java.util.List;
 
+import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
 
 /**
@@ -25,6 +26,17 @@ public class SearchDialogPresenter extends BasePresenter<SearchDialogContract.Vi
                     public void accept(List<MovieEntity.SubjectsBean> subjectsBeen) throws Exception {
                         mView.showMovieData(JSON.toJSONString(subjectsBeen));
                     }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        mView.showToast(throwable.getMessage());
+                    }
+                }, new Action() {
+                    @Override
+                    public void run() throws Exception {
+                        // complete
+                    }
                 });
     }
+
 }

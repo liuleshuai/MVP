@@ -5,4 +5,5 @@ package com.liuleshuai.common.base;
  */
 
 public interface BaseView {
+    void showToast(String s);
 }

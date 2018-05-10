@@ -95,4 +95,9 @@ public abstract class BaseFragment<T extends BasePresenter> extends SupportFragm
     protected void inject() {
         mPresenter = ClassUtil.getT(this, 0);
     }
+
+    @Override
+    public void showToast(String s) {
+        Toast.makeText(getActivity(), s, Toast.LENGTH_SHORT).show();
+    }
 }

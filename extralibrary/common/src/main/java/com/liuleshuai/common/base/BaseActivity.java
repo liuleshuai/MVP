@@ -2,6 +2,7 @@ package com.liuleshuai.common.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.widget.Toast;
 
 import com.liuleshuai.common.tools.ActivityManager;
 import com.liuleshuai.common.tools.ClassUtil;
@@ -57,7 +58,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends SupportActiv
     }
 
     /**
-     * 初始化事件、数据
+     * 在onCreate中初始化事件、数据
      */
     protected abstract void initEventAndData();
 
@@ -66,5 +67,10 @@ public abstract class BaseActivity<T extends BasePresenter> extends SupportActiv
      */
     protected void inject() {
         mPresenter = ClassUtil.getT(this, 0);
+    }
+
+    @Override
+    public void showToast(String s) {
+        Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
     }
 }

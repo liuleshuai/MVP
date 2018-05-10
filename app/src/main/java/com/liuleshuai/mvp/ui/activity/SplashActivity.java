@@ -24,6 +24,9 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements Spl
 
     @Override
     protected void initEventAndData() {
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         animationView.setAnimation("AndroidWare.json");
         animationView.playAnimation();
         animationView.addAnimatorListener(new Animator.AnimatorListener() {
@@ -35,6 +38,7 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements Spl
             @Override
             public void onAnimationEnd(Animator animation) {
                 mPresenter.jump();
+                finish();
             }
 
             @Override

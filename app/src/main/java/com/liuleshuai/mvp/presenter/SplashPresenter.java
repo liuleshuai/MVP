@@ -2,6 +2,7 @@ package com.liuleshuai.mvp.presenter;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.liuleshuai.common.base.BasePresenter;
+import com.liuleshuai.mvp.R;
 import com.liuleshuai.mvp.model.SplashContract;
 
 import java.util.concurrent.TimeUnit;
@@ -26,7 +27,10 @@ public class SplashPresenter extends BasePresenter<SplashContract.View> implemen
                 .subscribe(new Consumer<Object>() {
                     @Override
                     public void accept(Object o) throws Exception {
-                        ARouter.getInstance().build("/activity/main").navigation();
+                        ARouter.getInstance()
+                                .build("/activity/main")
+                                .withTransition(R.anim.fade_in_bottom, R.anim.fade_out_bottom)
+                                .navigation();
                     }
                 })
         );
