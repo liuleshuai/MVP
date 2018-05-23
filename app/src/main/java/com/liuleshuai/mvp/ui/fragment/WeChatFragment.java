@@ -58,7 +58,7 @@ public class WeChatFragment extends BaseFragment<WeChatPresenter> implements WeC
         adapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
             @Override
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                Toast.makeText(_mActivity, "你点击了Heater！！！", Toast.LENGTH_SHORT).show();
+                Toast.makeText(_mActivity, "你点击了Heart！！！", Toast.LENGTH_SHORT).show();
             }
         });
         mRecyclerView.setLayoutManager(new LinearLayoutManager(_mActivity));
