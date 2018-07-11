@@ -125,7 +125,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         MenuItem communcation = bottomNavigationView.getMenu().findItem(R.id.communcation);
         communcation.setIcon(R.mipmap.icon_knowledge_hierarchy_not_selected);
         MenuItem find = bottomNavigationView.getMenu().findItem(R.id.find);
-        communcation.setIcon(R.mipmap.icon_navigation_not_selected);
+        find.setIcon(R.mipmap.icon_navigation_not_selected);
         MenuItem mine = bottomNavigationView.getMenu().findItem(R.id.mine);
         mine.setIcon(R.mipmap.icon_home_pager_not_selected);
     }

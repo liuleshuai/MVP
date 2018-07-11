@@ -15,4 +15,11 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowBackground">@color/transparent</item>
     </style>
+
+    <style name="MyTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:background">@mipmap/sakura</item>
+        <!--这么做效果不好-->
+        <!--<item name="android:windowDisablePreview">true</item>-->
+    </style>
 </resources>

@@ -63,7 +63,8 @@ public abstract class BaseDialogFragment<T extends BasePresenter> extends Dialog
     /**
      * 调用映射代码（此处无法使用Dagger，因为不在一个包下）
      */
-    protected void inject() {
+    @Override
+    public void inject() {
         mPresenter = ClassUtil.getT(this, 0);
     }
 

@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.support.multidex.MultiDex;
 
+import com.squareup.leakcanary.LeakCanary;
+
 /**
  * Created by LiuKuo at 2018/3/21
  */
@@ -16,10 +18,23 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         baseApplication = this;
+        initLeakCanary();
     }
 
     /**
-     * 使用模拟器时，退出APP调用
+     * 内存泄漏
+     */
+    private void initLeakCanary() {
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            // This process is dedicated to LeakCanary for heap analysis.
+            // You should not init your app in this process.
+            return;
+        }
+        LeakCanary.install(this);
+    }
+
+    /**
+     * 使用模拟器时，退出APP时调用
      */
     @Override
     public void onTerminate() {

@@ -1,5 +1,8 @@
 package com.liuleshuai.common.base;
 
+import com.liuleshuai.common.ibase.IPresenter;
+import com.liuleshuai.common.ibase.IView;
+
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
@@ -7,7 +10,7 @@ import io.reactivex.disposables.Disposable;
  * @author liukuo
  */
 
-public class BasePresenter<T extends BaseView> {
+public class BasePresenter<T extends IView> implements IPresenter<T>{
     protected T mView;
     private CompositeDisposable compositeDisposable;
 
@@ -27,10 +30,12 @@ public class BasePresenter<T extends BaseView> {
         compositeDisposable.add(disposable);
     }
 
+    @Override
     public void attachView(T view) {
         this.mView = view;
     }
 
+    @Override
     public void detachView() {
         this.mView = null;
         if (compositeDisposable != null) {
