@@ -1,12 +1,14 @@
-package com.liuleshuai.common.tools;
+package com.liuleshuai.common.lifeCycle;
 
 import android.app.Activity;
 import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.LifecycleObserver;
+import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.OnLifecycleEvent;
 
 import com.liuleshuai.common.base.BaseView;
-import com.liuleshuai.common.ibase.IPresenter;
+import com.liuleshuai.common.iBase.IPresenter;
+import com.liuleshuai.common.tools.ActivityManager;
 
 import java.lang.ref.WeakReference;
 
@@ -18,17 +20,18 @@ import java.lang.ref.WeakReference;
  * // def lifecycle_version = "1.1.1"
  * // implementation "android.arch.lifecycle:common-java8:$lifecycle_version"
  * <p>
- *
+ * <p>
  * LifeCycle监听生命周期
  * Created by LiuKuo at 2018/7/11
+ *
  * @author liukuo
  */
 
-public class MvpLifeCycle<T extends IPresenter> implements LifecycleObserver {
-    private WeakReference<IPresenter> presenter;
+public class LifeCycleActivity<T extends IPresenter> implements LifecycleObserver {
+    private WeakReference<T> presenter;
     private WeakReference<Activity> activity;
 
-    public MvpLifeCycle(IPresenter presenter, Activity activity) {
+    public LifeCycleActivity(T presenter, Activity activity) {
         this.presenter = new WeakReference<>(presenter);
         this.activity = new WeakReference<>(activity);
     }
@@ -67,5 +70,10 @@ public class MvpLifeCycle<T extends IPresenter> implements LifecycleObserver {
             ActivityManager.getInstance().removeActivity(activity.get());
             presenter.get().detachView();
         }
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_ANY)
+    public void onAny(LifecycleOwner owner, Lifecycle.Event event) {
+
     }
 }

@@ -20,7 +20,7 @@ public class SearchDialogPresenter extends BasePresenter<SearchDialogContract.Vi
 
     @Override
     public void getMovieData() {
-        MovieLoader.builder(Constants.MOVIE_URL).getMovie(0, 10)
+        addDisposable(MovieLoader.builder(Constants.MOVIE_URL).getMovie(0, 10)
                 .subscribe(new Consumer<List<MovieEntity.SubjectsBean>>() {
                     @Override
                     public void accept(List<MovieEntity.SubjectsBean> subjectsBeen) throws Exception {
@@ -36,7 +36,9 @@ public class SearchDialogPresenter extends BasePresenter<SearchDialogContract.Vi
                     public void run() throws Exception {
                         // complete
                     }
-                });
+                })
+        );
+
     }
 
 }

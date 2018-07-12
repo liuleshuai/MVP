@@ -52,7 +52,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.search_item) {
             SearchDialogFragment searchDialogFragment = new SearchDialogFragment();
-            searchDialogFragment.show(getFragmentManager(), "SearchDialogFragment");
+            searchDialogFragment.show(getSupportFragmentManager(), "SearchDialogFragment");
         }
         return super.onOptionsItemSelected(item);
     }

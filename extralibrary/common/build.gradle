@@ -82,8 +82,4 @@ dependencies {
     //LifeCycle
     compile "android.arch.lifecycle:runtime:latest.integration"
     annotationProcessor "android.arch.lifecycle:compiler:latest.integration"
-
-    //leakcanary
-    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
-    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
 }

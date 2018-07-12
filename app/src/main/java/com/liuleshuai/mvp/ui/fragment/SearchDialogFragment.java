@@ -36,13 +36,15 @@ public class SearchDialogFragment extends BaseDialogFragment<SearchDialogPresent
     @BindView(R.id.tv)
     TextView tv;
 
+    /**
+     * DialogFragment.STYLE_NORMAL;         //默认样式
+     * DialogFragment.STYLE_NO_TITLE;       //无标题样式
+     * DialogFragment.STYLE_NO_FRAME;       //无边框样式
+     * DialogFragment.STYLE_NO_INPUT;       //不可输入，不可获得焦点样式
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-/*        DialogFragment.STYLE_NORMAL;//默认样式
-        DialogFragment.STYLE_NO_TITLE;//无标题样式
-        DialogFragment.STYLE_NO_FRAME;//无边框样式
-        DialogFragment.STYLE_NO_INPUT;//不可输入，不可获得焦点样式*/
         setStyle(DialogFragment.STYLE_NO_FRAME, R.style.DialogStyle);
     }
 
@@ -60,6 +62,7 @@ public class SearchDialogFragment extends BaseDialogFragment<SearchDialogPresent
         assert window != null;
         window.setLayout(width, WindowManager.LayoutParams.MATCH_PARENT);
         window.setGravity(Gravity.TOP);
+        window.setWindowAnimations(R.style.DialogFragmentAnimation);
     }
 
 
@@ -87,5 +90,11 @@ public class SearchDialogFragment extends BaseDialogFragment<SearchDialogPresent
     @Override
     public void showMovieData(String data) {
         tv.setText(data);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
     }
 }

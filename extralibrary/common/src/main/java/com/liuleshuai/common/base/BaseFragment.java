@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.liuleshuai.common.lifeCycle.LifeCycleFragment;
 import com.liuleshuai.common.tools.ClassUtil;
 
 import butterknife.ButterKnife;
@@ -14,13 +15,23 @@ import butterknife.Unbinder;
 import me.yokeyword.fragmentation.SupportFragment;
 
 /**
- * Created by LiuKuo at 2018/3/21
+ * Created at 2018/3/21
+ * @author liukuo
  */
 
 public abstract class BaseFragment<T extends BasePresenter> extends SupportFragment implements BaseView {
     protected T mPresenter;
     private Unbinder unBinder;
     private long clickTime;
+
+    /**
+     * 不一定非要在onCreate中注入监听生命周期
+     */
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        inject();
+    }
 
     @Nullable
     @Override
@@ -32,11 +43,8 @@ public abstract class BaseFragment<T extends BasePresenter> extends SupportFragm
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        inject();
-        if (mPresenter != null) {
-            mPresenter.attachView(this);
-        }
         super.onViewCreated(view, savedInstanceState);
+        initEventAndData();
     }
 
     /**
@@ -45,7 +53,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends SupportFragm
     @Override
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
         super.onLazyInitView(savedInstanceState);
-        initEventAndData();
+        lazyInitEventAndData();
     }
 
     @Override
@@ -90,11 +98,22 @@ public abstract class BaseFragment<T extends BasePresenter> extends SupportFragm
     protected abstract void initEventAndData();
 
     /**
+     * 懒加载初始化数据
+     * 需要时复写
+     */
+    protected void lazyInitEventAndData() {
+    }
+
+    /**
+     * 注入
+     *
      * 调用映射代码（此处无法使用Dagger，因为不在一个包下）
+     * 监听生命周期
      */
     @Override
     public void inject() {
         mPresenter = ClassUtil.getT(this, 0);
+        getLifecycle().addObserver(new LifeCycleFragment<>(mPresenter, this));
     }
 
     @Override

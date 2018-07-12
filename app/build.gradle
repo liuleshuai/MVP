@@ -79,4 +79,8 @@ dependencies {
 
     //路由
     annotationProcessor 'com.alibaba:arouter-compiler:latest.integration'
+
+    //leakcanary(放在common里不起作用，代码打不进主app中)
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
 }

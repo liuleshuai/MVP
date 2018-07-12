@@ -6,6 +6,7 @@ import com.liuleshuai.mvp.BuildConfig;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 import com.orhanobut.logger.PrettyFormatStrategy;
+import com.squareup.leakcanary.LeakCanary;
 
 /**
  * Created by LiuKuo at 2018/3/22
@@ -18,6 +19,7 @@ public class MyApplication extends BaseApplication {
     public void onCreate() {
         super.onCreate();
         initARouter();
+        initLeakCanary();
         initLogger();
     }
 
@@ -41,5 +43,17 @@ public class MyApplication extends BaseApplication {
             Logger.addLogAdapter(new AndroidLogAdapter(PrettyFormatStrategy.newBuilder().
                     tag(tag).build()));
         }
+    }
+
+    /**
+     * 内存泄漏
+     */
+    private void initLeakCanary() {
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            // This process is dedicated to LeakCanary for heap analysis.
+            // You should not init your app in this process.
+            return;
+        }
+        LeakCanary.install(this);
     }
 }

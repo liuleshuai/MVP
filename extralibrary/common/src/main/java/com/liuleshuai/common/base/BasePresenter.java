@@ -1,7 +1,7 @@
 package com.liuleshuai.common.base;
 
-import com.liuleshuai.common.ibase.IPresenter;
-import com.liuleshuai.common.ibase.IView;
+import com.liuleshuai.common.iBase.IPresenter;
+import com.liuleshuai.common.iBase.IView;
 
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
