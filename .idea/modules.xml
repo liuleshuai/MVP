@@ -3,9 +3,13 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MVP.iml" filepath="$PROJECT_DIR$/MVP.iml" />
+      <module fileurl="file://C:\Users\67017\AndroidStudioProjects\MVP\MVP.iml" filepath="C:\Users\67017\AndroidStudioProjects\MVP\MVP.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\67017\AndroidStudioProjects\MVP\app\app.iml" filepath="C:\Users\67017\AndroidStudioProjects\MVP\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/extralibrary/common/common.iml" filepath="$PROJECT_DIR$/extralibrary/common/common.iml" />
+      <module fileurl="file://C:\Users\67017\AndroidStudioProjects\MVP\extralibrary\common\common.iml" filepath="C:\Users\67017\AndroidStudioProjects\MVP\extralibrary\common\common.iml" />
       <module fileurl="file://$PROJECT_DIR$/extralibrary/extralibrary.iml" filepath="$PROJECT_DIR$/extralibrary/extralibrary.iml" />
+      <module fileurl="file://C:\Users\67017\AndroidStudioProjects\MVP\extralibrary\extralibrary.iml" filepath="C:\Users\67017\AndroidStudioProjects\MVP\extralibrary\extralibrary.iml" />
     </modules>
   </component>
 </project>

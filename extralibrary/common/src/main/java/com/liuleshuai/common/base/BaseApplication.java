@@ -16,6 +16,14 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         baseApplication = this;
+        initGreenDao();
+    }
+
+    /**
+     * 数据库初始化
+     */
+    private void initGreenDao() {
+
     }
 
     /**

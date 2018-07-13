@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion rootProject.ext.android["externalCompileSdkVersion"]
-    buildToolsVersion rootProject.ext.android["externalBuildToolsVersion"]
     defaultConfig {
         applicationId "com.liuleshuai.mvp"
         minSdkVersion rootProject.ext.android["externalMinSdkVersion"]
@@ -10,6 +9,7 @@ android {
         versionCode rootProject.ext.android["externalVersionCode"]
         versionName rootProject.ext.android["externalVersionName"]
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary= true
 
         javaCompileOptions {
             annotationProcessorOptions {
@@ -24,17 +24,16 @@ android {
             minifyEnabled false
             //Zipalign优化
             zipAlignEnabled true
-            // 移除无用的resource文件
-            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             //apk命名
-            android.applicationVariants.all { variant ->
-                variant.outputs.each { output ->
+            applicationVariants.all { variant ->
+                variant.outputs.all { output ->
                     def outputFile = output.outputFile
+                    def releaseTime = new Date().format("yyyyMMdd", TimeZone.getTimeZone("UTC"))
+                    def fileName = "MVP-${defaultConfig.versionCode}-${defaultConfig.versionName}-${releaseTime}.apk"
                     if (outputFile != null && outputFile.name.endsWith('.apk')) {
                         //这里修改apk文件名
-                        def fileName = "MVPDagger-${defaultConfig.versionCode}-${defaultConfig.versionName}-${releaseTime()}.apk"
-                        output.outputFile = new File(outputFile.parent, fileName)
+                        outputFileName = fileName
                     }
                 }
             }
@@ -43,7 +42,6 @@ android {
             buildConfigField "boolean", "LOG_DEBUG", "true"
             minifyEnabled false
             zipAlignEnabled false
-            shrinkResources false
         }
     }
     //打包不检查
