@@ -1,6 +1,6 @@
 package com.liuleshuai.common.base;
 
-import com.liuleshuai.common.iBase.IView;
+import com.liuleshuai.common.ibase.IView;
 
 /**
  * Created by LiuKuo at 2018/3/21

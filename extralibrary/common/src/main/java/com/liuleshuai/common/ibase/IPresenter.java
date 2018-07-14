@@ -1,4 +1,4 @@
-package com.liuleshuai.common.iBase;
+package com.liuleshuai.common.ibase;
 
 /**
  * Created at 2018/7/11

@@ -7,7 +7,7 @@ import android.arch.lifecycle.OnLifecycleEvent;
 import android.support.v4.app.Fragment;
 
 import com.liuleshuai.common.base.BaseView;
-import com.liuleshuai.common.iBase.IPresenter;
+import com.liuleshuai.common.ibase.IPresenter;
 
 import java.lang.ref.WeakReference;
 

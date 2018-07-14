@@ -6,8 +6,8 @@ import android.arch.lifecycle.LifecycleObserver;
 import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.OnLifecycleEvent;
 
-import com.liuleshuai.common.base.BaseView;
-import com.liuleshuai.common.iBase.IPresenter;
+import com.liuleshuai.common.ibase.IPresenter;
+import com.liuleshuai.common.ibase.IView;
 import com.liuleshuai.common.tools.ActivityManager;
 
 import java.lang.ref.WeakReference;
@@ -40,7 +40,7 @@ public class LifeCycleActivity<T extends IPresenter> implements LifecycleObserve
     public void onCreat() {
         if (activity.get() != null && presenter.get() != null) {
             ActivityManager.getInstance().addActivity(activity.get());
-            presenter.get().attachView((BaseView) activity.get());
+            presenter.get().attachView((IView) activity.get());
         }
     }
 

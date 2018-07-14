@@ -1,7 +1,8 @@
 package com.liuleshuai.common.base;
 
-import com.liuleshuai.common.iBase.IPresenter;
-import com.liuleshuai.common.iBase.IView;
+
+import com.liuleshuai.common.ibase.IPresenter;
+import com.liuleshuai.common.ibase.IView;
 
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
@@ -10,7 +11,7 @@ import io.reactivex.disposables.Disposable;
  * @author liukuo
  */
 
-public class BasePresenter<T extends IView> implements IPresenter<T>{
+public class BasePresenter<T extends IView> implements IPresenter<T> {
     protected T mView;
     private CompositeDisposable compositeDisposable;
 

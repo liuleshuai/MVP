@@ -51,27 +51,22 @@ android {
     }
 }
 
-def releaseTime() {
-    return new Date().format("yyyyMMdd", TimeZone.getTimeZone("UTC"))
-}
-
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile "com.android.support:appcompat-v7:${rootProject.ext.android["androidSupportVersion"]}"
-    testCompile 'junit:junit:4.12'
-    compile project(':extralibrary:common')
+    implementation "com.android.support:appcompat-v7:${rootProject.ext.android["androidSupportVersion"]}"
+    testImplementation 'junit:junit:4.12'
+    implementation project(':extralibrary:common')
 
     //butterKnife
-    compile 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
-    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:latest.integration'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:latest.integration'
 
     //lottie
-    compile('com.airbnb.android:lottie:2.5.1') {
+    implementation('com.airbnb.android:lottie:2.5.1') {
         exclude group: 'com.android.support'
     }
 
@@ -79,6 +74,6 @@ dependencies {
     annotationProcessor 'com.alibaba:arouter-compiler:latest.integration'
 
     //leakcanary(放在common里不起作用，代码打不进主app中)
-    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
-    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
 }

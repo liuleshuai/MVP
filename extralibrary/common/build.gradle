@@ -19,67 +19,68 @@ android {
             }
         }
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-}
 
-greendao{
-    //版本号，升级时可配置
-    schemaVersion 1
-    //生成数据库文件的目录
-    targetGenDir 'src/main/java'
-    //具体位置dao文件夹下
-    daoPackage 'com.liuleshuai.common.dao'
+    greendao{
+        //版本号，升级时可配置
+        schemaVersion 1
+        //生成数据库文件的目录
+        targetGenDir 'src/main/java'
+        //具体位置dao文件夹下
+        daoPackage 'com.liuleshuai.common.dao'
+    }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile "com.android.support:appcompat-v7:${rootProject.ext.android["androidSupportVersion"]}"
-    compile "com.android.support:design:${rootProject.ext.android["androidSupportVersion"]}"
-    compile "com.android.support:cardview-v7:${rootProject.ext.android["androidSupportVersion"]}"
-    compile "com.android.support:support-v4:${rootProject.ext.android["androidSupportVersion"]}"
-    testCompile 'junit:junit:4.12'
+    implementation "com.android.support:appcompat-v7:${rootProject.ext.android["androidSupportVersion"]}"
+    api "com.android.support:design:${rootProject.ext.android["androidSupportVersion"]}"
+    api "com.android.support:cardview-v7:${rootProject.ext.android["androidSupportVersion"]}"
+    api "com.android.support:support-v4:${rootProject.ext.android["androidSupportVersion"]}"
+    testImplementation 'junit:junit:4.12'
 
     //butterKnife(注意：在library中只需这一个，否则报错)
-    compile 'com.jakewharton:butterknife:8.8.1'
+    api 'com.jakewharton:butterknife:8.8.1'
     // fragmentation
-    compile 'me.yokeyword:fragmentation:1.3.3'
+    api 'me.yokeyword:fragmentation:1.3.3'
     //下面两个是RxJava2 和RxAndroid
-    compile 'io.reactivex.rxjava2:rxjava:2.1.5'
+    api 'io.reactivex.rxjava2:rxjava:2.1.5'
     //用于Android开发,拓展RxJava功能，添加了 Android 用的接口
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    api 'io.reactivex.rxjava2:rxandroid:2.0.1'
     //转换器，请求结果转换成Model
-    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+    api 'com.squareup.retrofit2:converter-gson:2.3.0'
     //配合retrofit使用
-    compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
-    compile 'com.squareup.okhttp3:logging-interceptor:3.9.0'
+    api 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    api 'com.squareup.okhttp3:logging-interceptor:3.9.0'
     //dagger2
-    compile 'com.google.dagger:dagger:2.2'
+    api 'com.google.dagger:dagger:2.2'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.2'
     //RxBinding（支持RxJava2的版本）
-    compile 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
-    compile 'com.jakewharton.rxbinding2:rxbinding-support-v4:2.0.0'
-    compile 'com.jakewharton.rxbinding2:rxbinding-appcompat-v7:2.0.0'
-    compile 'com.jakewharton.rxbinding2:rxbinding-design:2.0.0'
-    compile 'com.jakewharton.rxbinding2:rxbinding-recyclerview-v7:2.0.0'
+    api 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
+    api 'com.jakewharton.rxbinding2:rxbinding-support-v4:2.0.0'
+    api 'com.jakewharton.rxbinding2:rxbinding-appcompat-v7:2.0.0'
+    api 'com.jakewharton.rxbinding2:rxbinding-design:2.0.0'
+    api 'com.jakewharton.rxbinding2:rxbinding-recyclerview-v7:2.0.0'
     //权限
-    compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar'
+    api 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar'
     //Log打印
-    compile 'com.orhanobut:logger:latest.integration'
+    api 'com.orhanobut:logger:latest.integration'
     // fastjson
-    compile 'com.alibaba:fastjson:latest.integration'
+    api 'com.alibaba:fastjson:latest.integration'
     //路由
-    compile 'com.alibaba:arouter-api:latest.integration'
+    api 'com.alibaba:arouter-api:latest.integration'
     annotationProcessor 'com.alibaba:arouter-compiler:latest.integration'
     //LifeCycle
-    compile "android.arch.lifecycle:runtime:latest.integration"
+    api "android.arch.lifecycle:runtime:latest.integration"
     annotationProcessor "android.arch.lifecycle:compiler:latest.integration"
     //greendao
     api 'org.greenrobot:greendao:3.2.2'

@@ -7,7 +7,7 @@ import com.liuleshuai.common.base.BaseView;
  */
 
 public interface MainContract {
-    interface View extends BaseView{
+    interface View extends BaseView {
 
     }
     interface Presenter{
