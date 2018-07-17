@@ -7,8 +7,6 @@ import android.widget.Toast;
 import com.liuleshuai.common.lifeCycle.LifeCycleActivity;
 import com.liuleshuai.common.tools.ClassUtil;
 
-import javax.inject.Inject;
-
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import me.yokeyword.fragmentation.SupportActivity;
@@ -18,7 +16,7 @@ import me.yokeyword.fragmentation.SupportActivity;
  */
 
 public abstract class BaseActivity<T extends BasePresenter> extends SupportActivity implements BaseView {
-    @Inject
+
     protected T mPresenter;
     private Unbinder unBinder;
 
