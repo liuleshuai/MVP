@@ -62,18 +62,17 @@ dependencies {
 
     //butterKnife
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-
+    //BaseRecyclerViewAdapterHelper
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:latest.integration'
-
     //lottie
     implementation('com.airbnb.android:lottie:2.5.1') {
         exclude group: 'com.android.support'
     }
-
     //路由
     annotationProcessor 'com.alibaba:arouter-compiler:latest.integration'
-
     //leakcanary(放在common里不起作用，代码打不进主app中)
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+    //Dagger2
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.13'
 }

@@ -16,6 +16,7 @@ import me.yokeyword.fragmentation.SupportActivity;
  */
 
 public abstract class BaseActivity<T extends BasePresenter> extends SupportActivity implements BaseView {
+
     protected T mPresenter;
     private Unbinder unBinder;
 
