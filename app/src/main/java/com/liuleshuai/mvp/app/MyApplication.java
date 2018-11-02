@@ -9,7 +9,7 @@ import com.orhanobut.logger.PrettyFormatStrategy;
 import com.squareup.leakcanary.LeakCanary;
 
 /**
- * Created by LiuKuo at 2018/3/22
+ * @author liukuo
  */
 
 public class MyApplication extends BaseApplication {

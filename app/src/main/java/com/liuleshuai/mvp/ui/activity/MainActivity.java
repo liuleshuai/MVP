@@ -16,6 +16,8 @@ import com.liuleshuai.mvp.R;
 import com.liuleshuai.mvp.app.Constants;
 import com.liuleshuai.mvp.model.MainContract;
 import com.liuleshuai.mvp.presenter.MainPresenter;
+import com.liuleshuai.mvp.ui.fragment.FindFragment;
+import com.liuleshuai.mvp.ui.fragment.FriendFragment;
 import com.liuleshuai.mvp.ui.fragment.SearchDialogFragment;
 import com.liuleshuai.mvp.ui.fragment.WeChatFragment;
 
@@ -132,9 +134,14 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 
     private void initData() {
         fragmentList = new ArrayList<>();
-        for (int i = 0; i < 4; i++) {
-            WeChatFragment fragment = WeChatFragment.getInstance(null, null);
-            fragmentList.add(fragment);
-        }
+        WeChatFragment fragment1 = WeChatFragment.getInstance(null, null);
+        fragmentList.add(fragment1);
+        FriendFragment fragment2 = FriendFragment.getInstance(null, null);
+        fragmentList.add(fragment2);
+        FindFragment fragment3 = FindFragment.getInstance(null, null);
+        fragmentList.add(fragment3);
+        WeChatFragment fragment4 = WeChatFragment.getInstance(null, null);
+        fragmentList.add(fragment4);
+
     }
 }
