@@ -4,7 +4,6 @@ import android.graphics.Bitmap;
 import android.support.annotation.LayoutRes;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,12 +32,13 @@ public abstract class PowerfulAdapter<T> extends RecyclerView.Adapter<PowerfulAd
 
     @Override
     public VH onCreateViewHolder(ViewGroup parent, int viewType) {
+        Log.d("LKLK", "新建onCreateViewHolder");
         return VH.getViewHolder(parent, layoutResId);
     }
 
     @Override
     public void onBindViewHolder(VH holder, final int position) {
-        Log.d("LKLK", position + "");
+        Log.d("LKLK", "onBindViewHolder" + position);
         convert(holder, data.get(position), position);
         if (onItemClickListener != null) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -100,12 +100,10 @@ public abstract class PowerfulAdapter<T> extends RecyclerView.Adapter<PowerfulAd
 
 
     public static class VH extends RecyclerView.ViewHolder {
-        private static SparseArray<View> mViews;
         public View itemView;
 
         private VH(View itemView) {
             super(itemView);
-            mViews = new SparseArray<>();
             this.itemView = itemView;
         }
 
@@ -115,21 +113,19 @@ public abstract class PowerfulAdapter<T> extends RecyclerView.Adapter<PowerfulAd
         }
 
         private <T extends View> T getView(int id) {
-            View view = mViews.get(id);
-            if (view == null) {
-                view = itemView.findViewById(id);
-                mViews.put(id, view);
-            }
+            View view = itemView.findViewById(id);
             return (T) view;
         }
 
         public VH setText(int id, CharSequence text) {
-            ((TextView) getView(id)).setText(text);
+            TextView view = getView(id);
+            view.setText(text);
             return this;
         }
 
         public VH setImage(int id, int img) {
-            ((ImageView) getView(id)).setImageResource(img);
+            ImageView iv =  getView(id);
+            iv.setImageResource(img);
             return this;
         }
 
