@@ -4,11 +4,14 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
 
 import com.liuleshuai.common.base.BaseFragment;
 import com.liuleshuai.common.tools.PowerfulAdapter;
 import com.liuleshuai.mvp.R;
 import com.liuleshuai.mvp.app.Constants;
+import com.liuleshuai.mvp.app.MyApplication;
 import com.liuleshuai.mvp.bean.WeChatBean;
 import com.liuleshuai.mvp.model.WeChatContract;
 import com.liuleshuai.mvp.presenter.WeChatPresenter;
@@ -49,13 +52,21 @@ public class FriendFragment extends BaseFragment<WeChatPresenter> implements WeC
         adapter = new PowerfulAdapter<WeChatBean>(R.layout.item_wechat, data) {
             @Override
             public void convert(VH holder, WeChatBean item, int position) {
-                Log.d("LKLK",item.getText());
-                holder.setText(R.id.tv, item.getText());
-                holder.setImage(R.id.iv, item.getDrawable());
+                Log.d("LKLK", position + "");
+                holder.setText(R.id.tv, item.getText())
+                        .setImage(R.id.iv, item.getDrawable())
+                        .addOnClickListener(R.id.iv);
             }
         };
+        adapter.setOnItemChildClickListener(new PowerfulAdapter.OnItemChildClickListener() {
+            @Override
+            public void onItemChildClick(View view, int position) {
+                Toast.makeText(MyApplication.getAppContext(), position + "!", Toast.LENGTH_SHORT).show();
+            }
+        });
         mRecyclerView.setLayoutManager(new LinearLayoutManager(_mActivity));
         mRecyclerView.setAdapter(adapter);
+        Log.d("LKLK","position");
     }
 
     private void initData() {
@@ -70,15 +81,5 @@ public class FriendFragment extends BaseFragment<WeChatPresenter> implements WeC
         data.add(new WeChatBean("8", R.mipmap.icon_like_article_not_selected));
         data.add(new WeChatBean("9", R.mipmap.icon_like_article_not_selected));
         data.add(new WeChatBean("10", R.mipmap.icon_like_article_not_selected));
-        data.add(new WeChatBean("11", R.mipmap.icon_like_article_not_selected));
-        data.add(new WeChatBean("12", R.mipmap.icon_like_article_not_selected));
-        data.add(new WeChatBean("13", R.mipmap.icon_like_article_not_selected));
-        data.add(new WeChatBean("14", R.mipmap.icon_like_article_not_selected));
-        data.add(new WeChatBean("15", R.mipmap.icon_like_article_not_selected));
-        data.add(new WeChatBean("16", R.mipmap.icon_like_article_not_selected));
-        data.add(new WeChatBean("17", R.mipmap.icon_like_article_not_selected));
-        data.add(new WeChatBean("18", R.mipmap.icon_like_article_not_selected));
-        data.add(new WeChatBean("19", R.mipmap.icon_like_article_not_selected));
-        data.add(new WeChatBean("20", R.mipmap.icon_like_article_not_selected));
     }
 }
