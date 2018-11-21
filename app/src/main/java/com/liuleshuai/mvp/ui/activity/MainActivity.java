@@ -1,10 +1,13 @@
 package com.liuleshuai.mvp.ui.activity;
 
+import android.content.Intent;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -36,6 +39,8 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     ViewPager mViewPager;
     @BindView(R.id.navigation_view)
     BottomNavigationView bottomNavigationView;
+
+    Boolean isStop = false;
 
     private List<BaseFragment> fragmentList;
 
@@ -76,6 +81,28 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         mViewPager.addOnPageChangeListener(onPageListener);
         bottomNavigationView.setOnNavigationItemSelectedListener(onItemSelectedListener);
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
+        final Handler handler = new Handler();
+        Runnable r = new Runnable() {
+            @Override
+            public void run() {
+                if (!isStop) {
+                    Log.d("liukuo", "hahahaha");
+                    handler.postDelayed(this, 5000);
+                } else {
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                }
+            }
+        };
+        handler.post(r);
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        isStop = true;
     }
 
     private ViewPager.OnPageChangeListener onPageListener = new ViewPager.OnPageChangeListener() {

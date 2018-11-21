@@ -75,7 +75,7 @@ dependencies {
     //Log打印
     api 'com.orhanobut:logger:latest.integration'
     // fastjson
-    api 'com.alibaba:fastjson:latest.integration'
+    api 'com.alibaba:fastjson:1.2.51'
     //路由
     api 'com.alibaba:arouter-api:latest.integration'
     annotationProcessor 'com.alibaba:arouter-compiler:latest.integration'
