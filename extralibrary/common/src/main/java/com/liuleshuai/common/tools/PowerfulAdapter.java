@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.support.annotation.LayoutRes;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -100,10 +101,12 @@ public abstract class PowerfulAdapter<T> extends RecyclerView.Adapter<PowerfulAd
 
     public static class VH extends RecyclerView.ViewHolder {
         public View itemView;
+        private SparseArray<View> mViews;
 
         private VH(View itemView) {
             super(itemView);
             this.itemView = itemView;
+            mViews = new SparseArray<>();
         }
 
         private static VH getViewHolder(ViewGroup parent, int layoutId) {
@@ -111,8 +114,12 @@ public abstract class PowerfulAdapter<T> extends RecyclerView.Adapter<PowerfulAd
             return new VH(view);
         }
 
-        private <T extends View> T getView(int id) {
-            View view = itemView.findViewById(id);
+        public <T extends View> T getView(int viewId) {
+            View view = mViews.get(viewId);
+            if (view == null) {
+                view = itemView.findViewById(viewId);
+                mViews.put(viewId, view);
+            }
             return (T) view;
         }
 
